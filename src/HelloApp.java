@@ -1,17 +1,32 @@
+/**
+ * UC5: Display "Hello" with Multiple Command-Line Arguments
+ * using Enhanced For Loop or Default Message
+ */
+
 public class HelloApp {
 
     public static void main(String[] args) {
 
-        String message;
+        String name = "World";
 
         if (args.length > 0) {
-            // Join all names with comma
-            String names = String.join(", ", args);
-            message = "Hello, " + names + "!";
-        } else {
-            message = "Hello, World!";
+
+            StringBuilder nameBuilder = new StringBuilder();
+            boolean first = true;
+
+            for (String n : args) {
+
+                if (!first) {
+                    nameBuilder.append(", ");
+                }
+
+                nameBuilder.append(n);
+                first = false;
+            }
+
+            name = nameBuilder.toString();
         }
 
-        System.out.println(message);
+        System.out.println("Hello, " + name + "!");
     }
 }
